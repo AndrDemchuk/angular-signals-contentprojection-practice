@@ -14,10 +14,10 @@ export class AppComponent {
 
   // add a proper view query (hint, use the # reference string)
 
-  selectAllInput = viewChild.required<ElementRef<HTMLInputElement>>('txtInput');
+  selectAllInput = viewChild.required('txtInput', { read: ElementRef });
 
   onSelect() {
-    this.selectAllInput()?.nativeElement.select();
+    this.selectAllInput().nativeElement.select();
   }
 
   // onSelect() {

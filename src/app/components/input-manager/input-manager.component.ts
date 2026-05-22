@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, contentChild, contentChildren, ElementRef, viewChild, viewChildren } from '@angular/core';
+import { AfterViewInit, Component, contentChildren } from '@angular/core';
 import { ManagedInputDirective } from './managed-input.directive';
 
 @Component({
@@ -10,16 +10,16 @@ import { ManagedInputDirective } from './managed-input.directive';
 })
 export class InputManagerComponent implements AfterViewInit {
 
-  readonly contentDirectiveInputs = contentChildren(ManagedInputDirective);
+  readonly inputDirectives = contentChildren(ManagedInputDirective);
   ngAfterViewInit(): void {
-    console.log(this.contentDirectiveInputs());
+    console.log(this.inputDirectives());
   }
   // add a proper content query (hint, use the ManagedInputDirective)
 
 
   clearAll() {
-    this.contentDirectiveInputs().forEach(input => {
-      input.inputElement.value = '';
+    this.inputDirectives().forEach(directive => {
+      directive.inputElement.value = '';
     })
     /*     this.contentDirective */
     // use the content query to clear all inputs
